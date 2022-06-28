@@ -1,0 +1,15 @@
+.gitSearch{
+    padding: 3% 15%;
+}
+.gitSearch .searchHere{
+    margin:4%;
+}
+.gitSearch button{
+    margin:0% 1%;
+
+}
+.gitSearch input{
+    outline: none;
+    border:none;
+    border-bottom: 2px solid black;
+}
