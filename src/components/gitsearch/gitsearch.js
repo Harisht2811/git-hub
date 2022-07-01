@@ -13,7 +13,12 @@ function Gitsearch() {
   const handleClick=async()=>{
     console.log(Search);
     try{
+      // const result = await axios(`https://api.github.com/orgs/${Search}/repos`)
       const result = await axios(`https://api.github.com/orgs/${Search}/repos`)
+      // const result = await axios(`https://api.github.com/orgs/${Search}/repos`)
+      // const result = await axios(`https://api.github.com/orgs/${Search}/repos`)
+      // const result = await axios(`https://api.github.com/orgs/${Search}/repos`)
+
       setRepos(result);
     }catch(err){
       console.log(err)
