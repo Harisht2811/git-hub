@@ -38,8 +38,10 @@ margin:0;
     margin: 0 3%;
     font-size: large;
     color: white;
+    cursor:pointer;
 }
 .cardLink2{
     font-size: large;
     color: white;
+    cursor:pointer;
 }
