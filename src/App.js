@@ -1,10 +1,10 @@
 import './App.css';
 import Gitsearch from "./components/gitsearch/gitsearch";
-import Dashboard from  './components/dashboard/dashboard';
 import {BrowserRouter,Route,Routes} from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from "../src/components/store/store"
-
+import store from "../src/components/store/index"
+import Data from "../src/components/data"
+import Project from "../src/components/projects/projects"
 
 function App() {
   return (
@@ -13,7 +13,9 @@ function App() {
      <BrowserRouter>
       <Routes>
         <Route exact path='/' element={<Gitsearch/>}></Route>
-        <Route exact path='/dashboard' element={<Dashboard/>}></Route>
+        <Route exact path='/data' element={<Data/>}></Route>
+        <Route exact path='/project' element={<Project/>}></Route>
+
       </Routes>
       </BrowserRouter>
       </Provider>
