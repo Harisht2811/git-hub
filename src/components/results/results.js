@@ -3,26 +3,44 @@ import "../results/results.css";
 import { Card } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { selecte } from '../store/action';
-
+import { select,projectDet } from '../store/action'
 
 
 const Results=(props)=> {
   const { repos } = props;
+  console.log(repos)
+  const [searchRepos,setsearchRepos] = useState([]);
   const navigate = useNavigate();
 
     const dispatch = useDispatch();
-
 
     const handleClick = async (name) => {
             const result = name
             console.log("check",result)
             console.log("data",repos)
             const action ={ type:"SELECT_CHANZGE", text:result};
-            dispatch(selecte(action))
+            dispatch(select(action))
             navigate('/data')
 
     }  
+    
+    const projectDetails= async (name) => {
+      const result = name
+      console.log("check",result)
+      console.log("data",repos)
+      const action ={ type:"ProjectDet_CHANZGE", text:result};
+      dispatch(projectDet(action))
+      navigate('/project')
+
+} 
+const getFilterData=()=>{
+  if (searchRepos.length >0){
+      return repos.data.filter(
+          obj => obj.name.toLowerCase().includes(searchRepos.toLowerCase())
+       )
+    }
+return repos.data;
+}
 
   // const list = repos.length !== 0 ? repos.data.map((item) => <li>{item.name}</li>):(<li>No Repos Found</li>);
   // let data = localStorage.setItem("list", list)
@@ -36,9 +54,10 @@ const Results=(props)=> {
           <p>{list}</p>
         </div>
       </div> */}
+     <label className='searchItems'>Search Project : </label><input  type='text' placeholder='search project' onChange={e => setsearchRepos(e.target.value)}/>   
       <div className='repoData'>
         {
-          repos.length !== 0 ? (repos.data.map((item) =>
+          repos.length !== 0 ?(getFilterData().map((item) =>
             <Card className='card1' key={item.id} style={{ width: '18rem' }}>
               <Card.Img className='card-img' variant="top" src={item.owner.avatar_url} />
               Project Name<hr></hr><Card.Title className='card-title'> {item.name} </Card.Title>
@@ -53,8 +72,8 @@ const Results=(props)=> {
               {/* {
               <Card.Link className='prj_link' href={item.html_url}>git Link </Card.Link>
              <a className='prj_link' href={`${item.html_url}/projects`} > project details</a>} */}
-              {/* <a className='cardLink1' onClick={dashboard} > Git Link</a>
-              <a className='cardLink2' onClick={dashboard} > Project Details</a> */}
+              <a className='cardLink1' > Git Link</a>
+              <a className='cardLink2'  onClick={() => projectDetails(item.name)}  > ProjectDetails</a>
               <hr></hr>
             </Card>
           )):(<h1>No repos Found</h1>)

@@ -77,7 +77,7 @@ const SearchBar =(props) => {
         <div className='container '>
             <div className='gitSearch'> 
                 <h1 className='title'>Github Project</h1>
-                <br /><label>Search Here :</label><input  type='text' placeholder='search' value ={props.inputValue}  onChange ={props.inputChanged}/>    
+                <br /><label>Search Here :</label> <input  type='text' placeholder='search' value ={props.inputValue}  onChange ={props.inputChanged}/>    
                 <button className='btn btn-primary mx-3' onClick ={handleClick}> Search </button>
             </div>
             <div className='result'>

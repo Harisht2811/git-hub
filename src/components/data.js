@@ -44,7 +44,7 @@ import { select } from '../components/store/action';
     const [issues, setIssues] = useState([]);
   
     const fetchiditem = async () => {
-      const data = await fetch (`https://api.github.com/repos/venzo-tech/${selectValue.text}/issues`
+      const data = await fetch (`https://api.github.com/repos/venzo-mdu/${selectValue.text}/issues`
       );
       const itemdata = await data.json();
       setIssues(itemdata);
