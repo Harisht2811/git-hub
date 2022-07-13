@@ -3,44 +3,44 @@ import "../results/results.css";
 import { Card } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { select,projectDet } from '../store/action'
+import { select } from '../store/action';
 
 
 const Results=(props)=> {
   const { repos } = props;
-  console.log(repos)
-  const [searchRepos,setsearchRepos] = useState([]);
+  console.log("Repos is :",repos.data);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [searchRepos,setsearchRepos] = useState([]);
 
-    const dispatch = useDispatch();
 
-    const handleClick = async (name) => {
-            const result = name
-            console.log("check",result)
-            console.log("data",repos)
-            const action ={ type:"SELECT_CHANZGE", text:result};
-            dispatch(select(action))
-            navigate('/data')
 
-    }  
-    
-    const projectDetails= async (name) => {
+  const handleClick = async (name) => {
+          const result = name;
+          console.log("check",result)
+          const action ={ type:"SELECT_CHANZGE", text:result};
+          dispatch(select(action))
+          navigate('/data')
+
+  }  
+
+  const projectDetails = async (name) => {
       const result = name
       console.log("check",result)
-      console.log("data",repos)
-      const action ={ type:"ProjectDet_CHANZGE", text:result};
-      dispatch(projectDet(action))
+      const action ={ type:"SELECT_CHANZGE", text:result};
+      dispatch(select(action))
       navigate('/project')
 
 } 
-const getFilterData=()=>{
-  if (searchRepos.length >0){
-      return repos.data.filter(
+  const getFilterData=()=>{
+      if (searchRepos.length >0){  
+          return repos.data.filter(
           obj => obj.name.toLowerCase().includes(searchRepos.toLowerCase())
-       )
-    }
-return repos.data;
-}
+          ) 
+      }
+  return repos.data;
+  }
+
 
   // const list = repos.length !== 0 ? repos.data.map((item) => <li>{item.name}</li>):(<li>No Repos Found</li>);
   // let data = localStorage.setItem("list", list)
@@ -79,6 +79,7 @@ return repos.data;
           )):(<h1>No repos Found</h1>)
         }
       </div>
+
     </>
   )
 }

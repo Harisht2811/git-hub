@@ -34,6 +34,9 @@ import { select } from '../components/store/action';
   function Data() {
     // const dispatch = useDispatch();
     const selectValue = useSelector((state) => state.selectValue)
+    const orgValue =useSelector ((state) => state.inputValue)
+
+
     console.log("value",selectValue.text);
     useEffect(() => {
       fetchiditem();
@@ -44,11 +47,11 @@ import { select } from '../components/store/action';
     const [issues, setIssues] = useState([]);
   
     const fetchiditem = async () => {
-      const data = await fetch (`https://api.github.com/repos/venzo-mdu/${selectValue.text}/issues`
+      const data = await fetch (`https://api.github.com/repos/${orgValue.text}/${selectValue.text}/issues`
       );
       const itemdata = await data.json();
       setIssues(itemdata);
-      console.log("seeee",data,itemdata)
+      console.log("seeee",data,issues)
     }
     return (
       issues.map((item) => 

@@ -19,29 +19,29 @@ function Project() {
 
   const [Project, setProject] = useState([]);
   
-  const fetchidApi = async () => {
-    const data = await fetch(`https://api.github.com/repos/${orgValue.text}/${selectValue.text}/projects`,{
-        headers: {
-             'Authorization': `Bearer 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`,
-          },   
-    }
-    );
-    const itemdata = await data.json();
-    setProject(itemdata);
-  }
+  // const fetchidApi = async () => {
+  //   const data = await fetch(`https://api.github.com/repos/${orgValue.text}/${selectValue.text}/projects`,{
+  //       headers: {
+  //            'Authorization': `Bearer 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`,
+  //         },   
+  //   }
+  //   );
+  //   const itemdata = await data.json();
+  //   setProject(itemdata);
+  // }
 
   const handleClick = async (name) => {
     const id = name
     console.log("check",id)
     const action ={ type:"ProjectID_CHANZGE", text:id};
     dispatch(projectId(action))
-    navigate('/ProjectsDetails')
+    navigate('/projectDetails')
 
 }
   return (
 
     <div>
-      <h2 className=' mx-5 my-2'> Open Issues</h2>
+      <h2 className=' mx-5 my-2'>Inner Project</h2>
       <div className='projects details'>
         {Project.map((item) =>
           <Card className='card my-5' key={item.id} style={{ width: '18rem' }}>

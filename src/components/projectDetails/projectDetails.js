@@ -16,7 +16,9 @@ function Details() {
     const fetchidApi = async () => {
       const data = await fetch(`https://api.github.com/projects/columns/${idValue.text}/cards`,{
           headers: {
-               'Authorization': `Bearer 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`,
+               'Authorization': `Bearer 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
+               
+               `,
             },   
       }
       );

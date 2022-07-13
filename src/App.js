@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import store from "../src/components/store/index"
 import Data from "../src/components/data"
 import Project from "../src/components/projects/projects"
-import ProjectDetails from "../src/components/projectDetails/projectDetails"
-
+import ProjectDetails from "../src/components/todo/todo"
+import ProRes from '../src/components/projectDetails/projectDetails'
 function App() {
   return (
     <>
@@ -17,6 +17,8 @@ function App() {
         <Route exact path='/data' element={<Data/>}></Route>
         <Route exact path='/project' element={<Project/>}></Route>
         <Route exact path='/projectDetails' element={<ProjectDetails/>}></Route>
+        <Route exact path='/proRes' element={<ProRes/>}></Route>
+
       </Routes>
       </BrowserRouter>
       </Provider>

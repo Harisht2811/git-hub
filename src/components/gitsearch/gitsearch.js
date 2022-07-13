@@ -60,12 +60,23 @@ import axios from 'axios'
 import Result from '../results/results'
 import { connect } from 'react-redux';
 import "../gitsearch/gitsearch.css"
+import { useDispatch } from "react-redux";
+import { search } from '../store/action';
 
 const SearchBar =(props) => {
+    const dispatch = useDispatch();
+
     const [repos, SetRepos] =useState([])
     const handleClick = async () => {
         try{
-            const result =await axios(`https://api.github.com/orgs/${props.inputValue}/repos`) 
+            const result =await axios(`https://api.github.com/orgs/${props.inputValue}/repos`,{
+                headers: {
+                     'Authorization': `Bearer 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`,
+                  },   
+            })
+            const action ={ type:"INPUT_CHANZGE", text:props.inputValue};
+            console.log("action",props.inputChanged)
+            dispatch(search(action)) 
             SetRepos(result)
 
         }catch (err) {
@@ -104,8 +115,5 @@ const mapDispatchToProps = (dispatch) => {
 
     }
 }
-
-
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(SearchBar);
