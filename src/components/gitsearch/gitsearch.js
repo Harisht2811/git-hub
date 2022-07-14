@@ -71,7 +71,7 @@ const SearchBar =(props) => {
         try{
             const result =await axios(`https://api.github.com/orgs/${props.inputValue}/repos`,{
                 headers: {
-                     'Authorization': `Bearer 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`,
+                     'Authorization': `Bearer `,
                   },   
             })
             const action ={ type:"INPUT_CHANZGE", text:props.inputValue};

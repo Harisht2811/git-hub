@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {useNavigate} from "react-router-dom"
 import { useDispatch } from "react-redux";
-import { projectDet } from '../store/action';
+import { projectDet } from '../store/action'; 
+import Details from "../projectDetails/projectDetails"
 
 
 function ProjectsDetails() {
@@ -21,7 +22,7 @@ function ProjectsDetails() {
   const fetchidApi = async () => {
     const data = await fetch(`https://api.github.com/projects/${idValue.text}/columns`,{
         headers: {
-             'Authorization': `Bearer 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`,
+             'Authorization': `Bearer `,
           },   
     }
     );
@@ -35,12 +36,11 @@ function ProjectsDetails() {
     console.log("check",result)
     const action ={ type:"ProjectDet_CHANZGE", text:result};
     dispatch(projectDet(action))
-    navigate('/proRes')
 
 } 
   return (
     <div>
-      <h2 className=' mx-5 my-2'> Todo</h2>
+      <h2 className=' mx-5 my-2'>Columns</h2>
       <div className='open_issuse'>
         {open_issues.map((item) =>
           <Card className='card my-5' key={item.id} style={{ width: '18rem' }}>
@@ -52,8 +52,9 @@ function ProjectsDetails() {
           </Card>
         )}
       </div>
-      
+      <Details/>
     </div>
+    
 
   )
 }

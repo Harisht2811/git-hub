@@ -47,7 +47,11 @@ import { select } from '../components/store/action';
     const [issues, setIssues] = useState([]);
   
     const fetchiditem = async () => {
-      const data = await fetch (`https://api.github.com/repos/${orgValue.text}/${selectValue.text}/issues`
+      const data = await fetch (`https://api.github.com/repos/${orgValue.text}/${selectValue.text}/issues`,{
+        headers: {
+             'Authorization': `Bearer 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`,
+          },   
+    }
       );
       const itemdata = await data.json();
       setIssues(itemdata);
@@ -63,7 +67,7 @@ import { select } from '../components/store/action';
               <Card.Text>State: &nbsp;{item.state}</Card.Text>
               <Card.Text>Number: &nbsp;{item.number} </Card.Text>
             </Card.Body>
-         </Card>       
+         </Card>    
     )
     )
   }

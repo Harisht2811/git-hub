@@ -19,16 +19,16 @@ function Project() {
 
   const [Project, setProject] = useState([]);
   
-  // const fetchidApi = async () => {
-  //   const data = await fetch(`https://api.github.com/repos/${orgValue.text}/${selectValue.text}/projects`,{
-  //       headers: {
-  //            'Authorization': `Bearer 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`,
-  //         },   
-  //   }
-  //   );
-  //   const itemdata = await data.json();
-  //   setProject(itemdata);
-  // }
+  const fetchidApi = async () => {
+    const data = await fetch(`https://api.github.com/repos/${orgValue.text}/${selectValue.text}/projects`,{
+        headers: {
+             'Authorization': `Bearer `,
+          },   
+    }
+    );
+    const itemdata = await data.json();
+    setProject(itemdata);
+  }
 
   const handleClick = async (name) => {
     const id = name

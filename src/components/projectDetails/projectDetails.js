@@ -16,25 +16,23 @@ function Details() {
     const fetchidApi = async () => {
       const data = await fetch(`https://api.github.com/projects/columns/${idValue.text}/cards`,{
           headers: {
-               'Authorization': `Bearer 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
-               
-               `,
+               'Authorization': `Bearer `,
             },   
       }
       );
       const itemdata = await data.json();
-      setOpen_issues(itemdata);
       // console.log("issues", itemdata);
+        setOpen_issues(itemdata);
   
     }
  
     return (
       <div>
-        <h2 className=' mx-5 my-2'> Open Issues</h2>
+        <h2 className=' mx-5 my-2'> Inner Project Details</h2>
         <div className='open_issuse'>
           {open_issues.map((item) =>
             <Card className='card my-5' key={item.id} style={{ width: '18rem' }}>
-            Issues Name: <Card.Title> {item.note} </Card.Title>
+            Inner Details Name: <Card.Title> {item.note} </Card.Title>
              
             </Card>
           )}
