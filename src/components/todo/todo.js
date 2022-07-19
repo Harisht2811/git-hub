@@ -10,7 +10,7 @@ import Details from "../projectDetails/projectDetails"
 function ProjectsDetails() {
   const idValue =useSelector ((state) => state.idValue)
   console.log("ProjectsDetails", idValue.text);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     fetchidApi();
@@ -18,11 +18,12 @@ function ProjectsDetails() {
 
 
   const [open_issues, setOpen_issues] = useState([]);
-
+  const [state,setState] =useState('')
   const fetchidApi = async () => {
     const data = await fetch(`https://api.github.com/projects/${idValue.text}/columns`,{
         headers: {
              'Authorization': `Bearer `,
+             
           },   
     }
     );
@@ -36,6 +37,7 @@ function ProjectsDetails() {
     console.log("check",result)
     const action ={ type:"ProjectDet_CHANZGE", text:result};
     dispatch(projectDet(action))
+    setState(true)
 
 } 
   return (
@@ -52,7 +54,15 @@ function ProjectsDetails() {
           </Card>
         )}
       </div>
-      <Details/>
+      <div>
+
+        {
+
+        state ? <Details />: <p className=' mx-5 my-4'> No Details</p>
+
+        }
+
+        </div>
     </div>
     
 

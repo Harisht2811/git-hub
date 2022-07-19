@@ -72,7 +72,10 @@ const SearchBar =(props) => {
             const result =await axios(`https://api.github.com/orgs/${props.inputValue}/repos`,{
                 headers: {
                      'Authorization': `Bearer `,
-                  },   
+                  },  
+                  params: {
+                      per_page: 100
+                     } 
             })
             const action ={ type:"INPUT_CHANZGE", text:props.inputValue};
             console.log("action",props.inputChanged)
@@ -87,7 +90,8 @@ const SearchBar =(props) => {
     return(
         <div className='container '>
             <div className='gitSearch'> 
-                <h1 className='title'>Github Project</h1>
+        
+                <h1 className='title'>Github Project 🙂</h1>
                 <br /><label>Search Here :</label> <input  type='text' placeholder='search' value ={props.inputValue}  onChange ={props.inputChanged}/>    
                 <button className='btn btn-primary mx-3' onClick ={handleClick}> Search </button>
             </div>

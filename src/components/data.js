@@ -49,7 +49,8 @@ import { select } from '../components/store/action';
     const fetchiditem = async () => {
       const data = await fetch (`https://api.github.com/repos/${orgValue.text}/${selectValue.text}/issues`,{
         headers: {
-             'Authorization': `Bearer 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`,
+             'Authorization': `Bearer `,
+             
           },   
     }
       );

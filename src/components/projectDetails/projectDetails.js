@@ -16,12 +16,13 @@ function Details() {
     const fetchidApi = async () => {
       const data = await fetch(`https://api.github.com/projects/columns/${idValue.text}/cards`,{
           headers: {
-               'Authorization': `Bearer `,
+               'Authorization': `Bearer  `,
+               
             },   
       }
       );
       const itemdata = await data.json();
-      // console.log("issues", itemdata);
+      console.log("issues", itemdata);
         setOpen_issues(itemdata);
   
     }

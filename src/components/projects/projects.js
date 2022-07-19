@@ -23,6 +23,7 @@ function Project() {
     const data = await fetch(`https://api.github.com/repos/${orgValue.text}/${selectValue.text}/projects`,{
         headers: {
              'Authorization': `Bearer `,
+             
           },   
     }
     );
@@ -35,7 +36,7 @@ function Project() {
     console.log("check",id)
     const action ={ type:"ProjectID_CHANZGE", text:id};
     dispatch(projectId(action))
-    navigate('/projectDetails')
+    navigate('/projectDetails');
 
 }
   return (
@@ -46,8 +47,6 @@ function Project() {
         {Project.map((item) =>
           <Card className='card my-5' key={item.id} style={{ width: '18rem' }}>
           projects Name: <Card.Link onClick={() => handleClick(item.id)}  value ={item.name}> {item.name} </Card.Link>
-
-            
           </Card>
         )}
       </div>
